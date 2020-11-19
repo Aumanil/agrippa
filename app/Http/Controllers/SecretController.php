@@ -70,6 +70,9 @@ class SecretController extends Controller
      */
     public function show($uuid4)
     {
+		$secretDecrypted = '';
+		$expires_at = '';
+		$views_remaining = '';
 
         $secret = Secret::where('uuid4', crypt($uuid4, '$6$rounds=5000$' . getenv('APP_SALT') . '$'))->first();
 
